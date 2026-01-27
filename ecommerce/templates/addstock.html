@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>ADDSTOCK</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">ADDSTOCK</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+<div class="container w-50 p-5 mt-5 text-center border border-3 shadow">
+<!--      {{csrf_token}}-->
+      <h1 class="text-center text-success mb-2" style="color:#b0b435 !important;">AddStock</h1>
+<form method="post">
+      {% csrf_token %}
+      {{form|crispy}}
+<!--      <input type="submit" class="btn btn-warning mt-3">-->
+<button type="submit" class="btn mt-3" style="background-color: #b0b435; color: white;">Submit</button>
+
+</form>
+
+</div>
+<br>
+{% endblock %}

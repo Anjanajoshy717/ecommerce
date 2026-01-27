@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container w-50 p-5 mt-5 text-center border border-3 shadow">
+<!--      {{csrf_token}}-->
+      <h1 class="text-center text-success mb-2" style="color:#b0b435 !important;">LOGIN</h1>
+<form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form|crispy}}
+<!--      <input type="submit" class="btn btn-warning mt-3">-->
+    <button type="submit" class="btn mt-3" style="background-color: #b0b435; color: white;">Submit</button>
+
+
+</form>
+    {% if messages %}
+<ul class="messages">
+    {% for m in messages %}
+    <li>{{m}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+</div>
+<br>
+
+
+{% endblock %}

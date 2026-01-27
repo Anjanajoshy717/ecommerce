@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>PAYMENT</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                        <li class="breadcrumb-item active">CHECKOUT</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+<div class="container w-50 p-5 mt-5 text-center border border-3 shadow">
+<!--      {{csrf_token}}-->
+      <h2 class="text-center text-success mb-2" style="color:#b0b435 !important;">Payment Successful</h2>
+    <p>Thankyou for your payment</p>
+    <a href="{% url 'shop:categories' %}" class="text-success">Go to Home Page</a>
+</div>
+<br>
+{% endblock %}
