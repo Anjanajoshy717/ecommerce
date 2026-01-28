@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-$(rue*tr-v81$5$0o7b_wfo!wf-o@xkzrp0fz(2#q(ph0=dnq6
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-LOGIN_URL = '/userlogin/'
+LOGIN_URL = "shop:userlogin"
 ALLOWED_HOSTS = []
 
 
