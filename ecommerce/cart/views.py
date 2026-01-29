@@ -4,7 +4,9 @@ from django.views import View
 from shop.models import Product
 from cart.models import Cart
 import uuid
-
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+@method_decorator(login_required,name="dispatch")
 class AddtoCart(View):
     def get(self,request,i):
         p=Product.objects.get(id=i)
@@ -18,6 +20,7 @@ class AddtoCart(View):
             c.save()
         return redirect('cart:cartview')
 
+@method_decorator(login_required,name="dispatch")
 class CartView(View):
     def get(self,request):
         u=request.user
@@ -28,6 +31,7 @@ class CartView(View):
         context={'cart':c,'total':total}
         return render(request,'cart.html',context)
 
+@method_decorator(login_required,name="dispatch")
 class CartDecrement(View):
     def get(self,request,i):
         try:
@@ -41,6 +45,7 @@ class CartDecrement(View):
             pass
         return redirect('cart:cartview')
 
+@method_decorator(login_required,name="dispatch")
 class CartRemove(View):
     def get(self, request, i):
         try:
@@ -53,7 +58,7 @@ class CartRemove(View):
 import razorpay
 from cart.forms import OrderForm
 from cart.models import OrderItems
-
+@method_decorator(login_required,name="dispatch")
 class Checkout(View):
     def get(self,request):
         form_instance=OrderForm()
@@ -103,6 +108,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from cart.models import Order
 @method_decorator(csrf_exempt,name="dispatch")
+@method_decorator(login_required,name="dispatch")
 class Paymentsuccess(View):
     def post(self,request,i):
         u= User.objects.get(username=i)
@@ -121,6 +127,7 @@ class Paymentsuccess(View):
         c.delete()
         return render(request, 'paymentsuccess.html')
 
+@method_decorator(login_required,name="dispatch")
 class OrderSummary(View):
     def get(self,request):
         u=request.user

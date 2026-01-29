@@ -83,6 +83,8 @@ class ProductDetails(View):
 from shop.forms import CategoryForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from shop.decorators import admin_required
+@method_decorator(admin_required,name="dispatch")
 @method_decorator(login_required,name="dispatch")
 class AddCategories(View):
     def get(self,request):
@@ -103,6 +105,7 @@ class AddCategories(View):
 from shop.forms import ProductForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+@method_decorator(admin_required,name="dispatch")
 @method_decorator(login_required,name="dispatch")
 class AddProducts(View):
     def get(self,request):
